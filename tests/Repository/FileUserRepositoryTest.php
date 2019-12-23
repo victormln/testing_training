@@ -27,4 +27,22 @@ final class FileUserRepositoryTest extends TestCase
         $this->assertEquals('female', $user->gender());
         $this->assertEquals('Finland', $user->country());
     }
+
+    public function testThatFileUserRepositoryReturnsTheExactAmountOfUsersGiven(): void
+    {
+        $userRepository = new FileUserRepository();
+
+        $users = $userRepository->getUsers(50);
+
+        $this->assertEquals(50, count($users));
+    }
+
+    public function testThatFileUserRepositoryReturns100Users(): void
+    {
+        $userRepository = new FileUserRepository();
+
+        $users = $userRepository->getUsers();
+
+        $this->assertEquals(100, count($users));
+    }
 }
