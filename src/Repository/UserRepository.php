@@ -9,8 +9,10 @@ use App\User;
 interface UserRepository
 {
 
-    public function getUser(): User;
+    public function getFirstUser(): User;
 
-    public function getUsers(int $limit = 3): array;
+    public function getUsers(int $limit = 100): array;
+
+    public function getRandomUser(): User;
 
 }

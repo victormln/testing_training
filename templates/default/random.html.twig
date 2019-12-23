@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Te ha salido el usuario: {{ user.name }} ({{ user.country }})</h1>
+    ¿Quieres volver a probar?
+
+    <a href="/randomize">Reintentar</a>
+{% endblock %}

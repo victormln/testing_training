@@ -2,6 +2,10 @@ index:
     path: /
     controller: App\Controller\GetHomeController
 
+random:
+    path: /randomize
+    controller: App\Controller\GetRandomUserController
+
 users:
     path: /users
     controller: App\Controller\GetUsersController

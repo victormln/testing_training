@@ -11,7 +11,7 @@ final class RandomUserRepository implements UserRepository
 
     private const RANDOM_USER_BASE_URL = 'https://randomuser.me/api';
 
-    public function getUser(): User
+    public function getFirstUser(): User
     {
         $url = self::RANDOM_USER_BASE_URL;
         $ch = curl_init($url);
@@ -34,7 +34,7 @@ final class RandomUserRepository implements UserRepository
         );
     }
 
-    public function getUsers(int $limit = 3): array
+    public function getUsers(int $limit = 100): array
     {
         $url = self::RANDOM_USER_BASE_URL . '?results=' . $limit;
         $ch = curl_init($url);
@@ -61,5 +61,10 @@ final class RandomUserRepository implements UserRepository
         }
 
         return $users;
+    }
+
+    public function getRandomUser(): User
+    {
+        // TODO: Implement getRandomUser() method.
     }
 }

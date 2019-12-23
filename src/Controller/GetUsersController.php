@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Repository\UserRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-final class GetUsersController
+final class GetUsersController extends AbstractController
 {
     /** @var UserRepository */
     private $userRepository;
@@ -21,21 +22,8 @@ final class GetUsersController
     {
         $users = $this->userRepository->getUsers();
 
-        $usersInArray = [];
-        foreach ($users as $user) {
-            $usersInArray[] = [
-                'name' => $user->name(),
-                'imageUrl' => $user->imageUrl(),
-                'gender' => $user->gender()
-            ];
-        }
-
-        $response = new Response();
-        $response->setContent(json_encode([
-            'data' => $usersInArray
-        ]));
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
+        return $this->render('default/users.html.twig', [
+            'users' => $users
+        ]);
     }
 }

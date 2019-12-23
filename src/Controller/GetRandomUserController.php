@@ -7,7 +7,7 @@ namespace App\Controller;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-final class GetHomeController extends AbstractController
+final class GetRandomUserController extends AbstractController
 {
     /** @var UserRepository */
     private $userRepository;
@@ -19,9 +19,9 @@ final class GetHomeController extends AbstractController
 
     public function __invoke()
     {
-        $user = $this->userRepository->getFirstUser();
+        $user = $this->userRepository->getRandomUser();
 
-        return $this->render('default/index.html.twig', [
+        return $this->render('default/random.html.twig', [
             'user' => $user
         ]);
     }
